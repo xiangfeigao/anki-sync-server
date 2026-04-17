@@ -31,8 +31,8 @@ jobs:
           platforms: linux/amd64
           load: true
           tags: |
-            afrima/anki-sync-server:25.09.2-rc
-            afrima/anki-sync-server:latest-rc
+            gaoxiangfei/anki-sync-server:25.09.2-rc
+            gaoxiangfei/anki-sync-server:latest-rc
           build-args: |
             NOW=${{ github.event.pull_request.updated_at }}
           cache-from: type=gha
@@ -41,7 +41,7 @@ jobs:
       - name: Wait for healthchecks
         run: |
           set -eux
-          docker run -e SYNC_USER1=test_user_name:test_user_password -d --name anki-sync-test afrima/anki-sync-server:latest-rc
+          docker run -e SYNC_USER1=test_user_name:test_user_password -d --name anki-sync-test gaoxiangfei/anki-sync-server:latest-rc
           # wait up to 60s for healthy
           for i in $(seq 1 30); do
             status=$(docker inspect -f '{{.State.Health.Status}}' anki-sync-test || echo starting)
@@ -60,8 +60,8 @@ jobs:
           platforms: linux/amd64,linux/arm64
           push: true
           tags: |
-            afrima/anki-sync-server:25.09.2-rc
-            afrima/anki-sync-server:latest-rc
+            gaoxiangfei/anki-sync-server:25.09.2-rc
+            gaoxiangfei/anki-sync-server:latest-rc
           build-args: |
             NOW=${{ github.event.pull_request.updated_at }}
           cache-from: type=gha
