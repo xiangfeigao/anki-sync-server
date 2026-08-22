@@ -32,7 +32,7 @@ RUN cargo install --locked \
       --target "$(cat /rust-target.txt)"
 
 # ---- runtime ----
-FROM gcr.io/distroless/static-debian12:nonroot@sha256:a9329520abc449e3b14d5bc3a6ffae065bdde0f02667fa10880c49b35c109fd1
+FROM gcr.io/distroless/static-debian12:nonroot@sha256:afa5c872c891853ca7fcf1f12c3edb23f7eeef36189728842dd51042ff57f7ab
 
 ARG NOW
 
@@ -47,7 +47,7 @@ LABEL org.opencontainers.image.created=$NOW \
       org.opencontainers.image.revision="25.09.2" \
       org.opencontainers.image.licenses="GNU AGPL-3.0-or-later" \
       org.opencontainers.image.vendor="Ankitects (Original Source Code); Docker Image by Mathieu Keller" \
-      org.opencontainers.image.base.name="gcr.io/distroless/static-debian12:nonroot" org.opencontainers.image.base.digest="sha256:a9329520abc449e3b14d5bc3a6ffae065bdde0f02667fa10880c49b35c109fd1"
+      org.opencontainers.image.base.name="gcr.io/distroless/static-debian12:nonroot" org.opencontainers.image.base.digest="sha256:afa5c872c891853ca7fcf1f12c3edb23f7eeef36189728842dd51042ff57f7ab"
 
 # cargo installs to /usr/local/cargo/bin regardless of --target
 COPY --from=build-env /usr/local/cargo/bin/anki-sync-server /anki-sync-server
